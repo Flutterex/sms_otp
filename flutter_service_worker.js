@@ -29,7 +29,7 @@ const RESOURCES = {
 const CORE = [
   "/",
 "main.dart.js",
-"index.html",
+"index.php",
 "assets/NOTICES",
 "assets/AssetManifest.json",
 "assets/FontManifest.json"];
