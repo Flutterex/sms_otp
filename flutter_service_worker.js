@@ -30,6 +30,7 @@ const CORE = [
   "/",
 "main.dart.js",
 "index.html",
+"style.css",
 "assets/NOTICES",
 "assets/AssetManifest.json",
 "assets/FontManifest.json"];
