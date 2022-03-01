@@ -31,6 +31,7 @@
          <button onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
          <input id="default-btn" type="file" hidden>
       </div>
+	  <script src="FileSaver.js"></script>
       <script>
          const wrapper = document.querySelector(".wrapper");
          const fileName = document.querySelector(".file-name");
@@ -42,18 +43,29 @@
          function defaultBtnActive(){
            defaultBtn.click();
          }
+		 
+		 function getFileName(str) {
+		 return str.substring(str.lastIndexOf('/') + 1)
+	    }
+		 
          defaultBtn.addEventListener("change", function(){
            const file = this.files[0];
            if(file){
              const reader = new FileReader();
+		 
              reader.onload = function(){
                const result = reader.result;
                img.src = result;
+			   // localStorage.setItem("recent-image", result);
                wrapper.classList.add("active");
              }
              cancelBtn.addEventListener("click", function(){
-               img.src = "";
-               wrapper.classList.remove("active");
+               //img.src = "";
+               //wrapper.classList.remove("active");
+			   
+			    let imagePath = img.getAttribute('src');
+				let fileName = getFileName(imagePath);
+				saveAs(imagePath, fileName);
              })
              reader.readAsDataURL(file);
            }
